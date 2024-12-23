@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "ES6", // ES6 output
+		"module": "NodeNext", // Node.js style modules
+		"strict": true, // Enable all strict checks
+		"esModuleInterop": true, // Allow default imports from modules with no default export
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "./dist", // Output directory after compilation
+		"rootDir": "./", // Source directory for your TypeScript files
+		"resolveJsonModule": true // Allow imports of JSON files
+	},
+	"include": ["./api/*.ts", "src/**/*"], // Include all files under `src`
+	"exclude": ["node_modules"] // Exclude node_modules
+}

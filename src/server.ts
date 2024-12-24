@@ -12,18 +12,23 @@ app.use(express.json());
 app.use(express.urlencoded());
 dotenv.config();
 
-connectDB().then(() => {
-	app.use(express.static(path.join(__dirname, "../client")));
+connectDB()
+	.then(() => {
+		app.use(express.static(path.join(__dirname, "../client")));
 
-	app.get("/api", (_, res: Response) => {
-		res.json({ message: "api is running" });
-	});
+		app.get("/api", (_, res: Response) => {
+			res.json({ message: "api is running" });
+		});
 
-	app.use("/api/users", userRoutes);
-	app.use("/api/tasks", taskRoutes);
-	app.get("*", (_: Request, res: Response) => {
-		res.sendFile(path.join(__dirname, "../client", "index.html"));
+		app.use("/api/users", userRoutes);
+		app.use("/api/tasks", taskRoutes);
+		app.get("*", (_: Request, res: Response) => {
+			res.sendFile(path.join(__dirname, "../client", "index.html"));
+		});
+	})
+	.catch((error) => {
+		console.log("Error ", error);
+		process.exit(1);
 	});
-});
 
 export default app;

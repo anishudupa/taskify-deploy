@@ -25,6 +25,10 @@ connectDB()
 		app.get("*", (_: Request, res: Response) => {
 			res.sendFile(path.join(__dirname, "../client", "index.html"));
 		});
+
+		app.listen(process.env.PORT || 5000, () =>
+			console.log("Server is running")
+		);
 	})
 	.catch((error) => {
 		console.log("Error ", error);

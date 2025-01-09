@@ -11,6 +11,7 @@ const app: Application = express();
 app.use(
 	cors({
 		origin: function (origin, cb) {
+			console.log(origin);
 			if (allowedOrdigins.indexOf(origin!) != -1) {
 				cb(null, true);
 			} else {

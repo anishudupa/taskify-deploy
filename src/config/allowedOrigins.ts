@@ -1,3 +1,3 @@
-const allowedOrdigins = ["https://taskify-ten-mu.vercel.app"];
+const allowedOrdigins: [] = [];
 
 export default allowedOrdigins;

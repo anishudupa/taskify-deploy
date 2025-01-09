@@ -12,7 +12,7 @@ app.use(
 	cors({
 		origin: function (origin, cb) {
 			console.log(origin);
-			if (allowedOrdigins.indexOf(origin!) != -1) {
+			if (allowedOrdigins.indexOf(origin!) != -1 || !origin) {
 				cb(null, true);
 			} else {
 				cb(new Error("not allowed by cors"));

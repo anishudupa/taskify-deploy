@@ -5,9 +5,21 @@ import connectDB from "./config/db";
 import userRoutes from "./routes/user.route";
 import taskRoutes from "./routes/task.route";
 import path from "path";
+import allowedOrdigins from "./config/allowedOrigins";
 
 const app: Application = express();
-app.use(cors());
+app.use(
+	cors({
+		origin: function (origin, cb) {
+			if (allowedOrdigins.indexOf(origin!) != -1) {
+				cb(null, true);
+			} else {
+				cb(new Error("not allowed by cors"));
+			}
+		},
+	})
+);
+
 app.use(express.json());
 app.use(express.urlencoded());
 dotenv.config();
